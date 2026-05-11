@@ -554,7 +554,7 @@ function Contact() {
     <section id="contact" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-4xl px-4">
         <div
-          ref={ref as React.RefObject<HTMLDivElement>}
+          ref={ref}
           className={cn(
             "group relative overflow-hidden rounded-3xl glass p-10 text-center shadow-card md:p-14 transition-all duration-700",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
