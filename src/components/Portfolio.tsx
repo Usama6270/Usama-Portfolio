@@ -549,6 +549,7 @@ function Experience() {
 }
 
 function Contact() {
+  const { ref, inView } = useInView<HTMLDivElement>(0.2);
   return (
     <section id="contact" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-4xl px-4">
