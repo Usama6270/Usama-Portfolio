@@ -229,7 +229,7 @@ function Hero() {
             </a>
           </Button>
           <Button asChild size="lg" variant="outline" className="rounded-full glass">
-            <a href="/cv.pdf" download>
+            <a href="/Usama_Jamshed_CV.pdf" download>
               <Download /> Download CV
             </a>
           </Button>
