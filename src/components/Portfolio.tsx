@@ -17,6 +17,7 @@ import {
   Sun,
   Moon,
   MapPin,
+  Phone,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
@@ -248,8 +249,11 @@ function Hero() {
           <a aria-label="LinkedIn" href="https://www.linkedin.com/in/usama-jamshed-a9a223264/" target="_blank" rel="noreferrer" className="transition-colors hover:text-foreground">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a aria-label="Email" href="mailto:i222499@nu.edu.pk" className="transition-colors hover:text-foreground">
+          <a aria-label="Email" href="mailto:usamaunder19@gmail.com" className="transition-colors hover:text-foreground">
             <Mail className="h-5 w-5" />
+          </a>
+          <a aria-label="Phone" href="tel:+923041632932" className="transition-colors hover:text-foreground">
+            <Phone className="h-5 w-5" />
           </a>
         </div>
       </div>
@@ -545,40 +549,88 @@ function Experience() {
 }
 
 function Contact() {
+  const { ref, inView } = useInView<HTMLDivElement>(0.2);
   return (
     <section id="contact" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-4xl px-4">
-        <div className="relative overflow-hidden rounded-3xl glass p-10 text-center shadow-card md:p-14">
-          <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-primary opacity-20 blur-3xl" />
-          <div className="mb-3 inline-block rounded-full border border-border glass px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-primary">
-            05 // Contact
-          </div>
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-5xl">
-            Let's <span className="text-gradient">build</span> something great.
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            Open to internships, full-time roles and collaborative projects in MERN, AI/ML and
-            product engineering.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button asChild size="lg" className="rounded-full bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-90">
-              <a href="mailto:i222499@nu.edu.pk">
-                <Mail /> i222499@nu.edu.pk
+        <div
+          ref={ref}
+          className={cn(
+            "group relative overflow-hidden rounded-3xl glass p-10 text-center shadow-card md:p-14 transition-all duration-700",
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          )}
+        >
+          {/* animated gradient ring */}
+          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[conic-gradient(from_var(--angle),transparent_0deg,oklch(0.78_0.18_175/0.35)_90deg,transparent_180deg,oklch(0.68_0.20_295/0.35)_270deg,transparent_360deg)] opacity-40 [mask:linear-gradient(#000,#000)_content-box,linear-gradient(#000,#000)] [mask-composite:exclude] p-px [--angle:0deg] animate-[spin_8s_linear_infinite]" style={{ ['--angle' as never]: '0deg' }} />
+          <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-primary opacity-20 blur-3xl animate-glow" />
+          <div className="absolute -bottom-24 right-0 h-56 w-56 rounded-full bg-secondary opacity-10 blur-3xl animate-float" />
+
+          <div className="relative">
+            <div className="mb-3 inline-block rounded-full border border-border glass px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-primary animate-fade-up">
+              05 // Contact
+            </div>
+            <h2 className="font-display text-3xl font-bold tracking-tight md:text-5xl animate-fade-up" style={{ animationDelay: "0.1s" }}>
+              Let's <span className="text-gradient">build</span> something great.
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-muted-foreground animate-fade-up" style={{ animationDelay: "0.2s" }}>
+              Open to internships, full-time roles and collaborative projects in MERN, AI/ML and
+              product engineering.
+            </p>
+
+            {/* contact chips */}
+            <div className="mx-auto mt-8 grid max-w-2xl gap-3 sm:grid-cols-2 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+              <a
+                href="mailto:usamaunder19@gmail.com"
+                className="hover-lift group/chip flex items-center gap-3 rounded-2xl glass px-4 py-3 text-left"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow transition-transform duration-300 group-hover/chip:scale-110">
+                  <Mail className="h-5 w-5" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Email</span>
+                  <span className="block truncate font-medium">usamaunder19@gmail.com</span>
+                </span>
               </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full glass">
-              <a href="https://github.com/Usama6270" target="_blank" rel="noreferrer">
-                <Github /> GitHub
+              <a
+                href="tel:+923041632932"
+                className="hover-lift group/chip flex items-center gap-3 rounded-2xl glass px-4 py-3 text-left"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow transition-transform duration-300 group-hover/chip:scale-110">
+                  <Phone className="h-5 w-5" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Phone</span>
+                  <span className="block truncate font-medium">+92 304 1632932</span>
+                </span>
               </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full glass">
-              <a href="https://www.linkedin.com/in/usama-jamshed-a9a223264/" target="_blank" rel="noreferrer">
-                <Linkedin /> LinkedIn
-              </a>
-            </Button>
-          </div>
-          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <MapPin className="h-3.5 w-3.5" /> Pakistan · Remote-friendly
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+              <Button asChild size="lg" className="rounded-full bg-gradient-primary text-primary-foreground shadow-glow transition-transform hover:opacity-90 hover:-translate-y-0.5">
+                <a href="mailto:usamaunder19@gmail.com">
+                  <Mail /> Email Me
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full glass transition-transform hover:-translate-y-0.5">
+                <a href="https://github.com/Usama6270" target="_blank" rel="noreferrer">
+                  <Github /> GitHub
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full glass transition-transform hover:-translate-y-0.5">
+                <a href="https://www.linkedin.com/in/usama-jamshed-a9a223264/" target="_blank" rel="noreferrer">
+                  <Linkedin /> LinkedIn
+                </a>
+              </Button>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-2 text-xs text-muted-foreground animate-fade-up" style={{ animationDelay: "0.5s" }}>
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              Available for new opportunities · Pakistan · Remote-friendly
+              <MapPin className="h-3.5 w-3.5" />
+            </div>
           </div>
         </div>
       </div>
